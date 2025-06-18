@@ -1,3 +1,4 @@
-from .reserva_service import ReservaService
+# Services do app propriedades
+# Por enquanto, não há services específicos para propriedades
 
-__all__ = ['ReservaService'] 
+__all__ = [] 

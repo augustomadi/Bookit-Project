@@ -1,14 +1,10 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import PropriedadeViewSet, ReservaViewSet
-from .views.availability import PropertyAvailabilityView
-
+from .views import PropriedadeViewSet
 
 router = DefaultRouter()
 router.register(r'properties', PropriedadeViewSet)
-router.register(r'reservations', ReservaViewSet)
 
 urlpatterns = [
-    path('', include(router.urls)),
-    path('properties/availability', PropertyAvailabilityView.as_view(), name='property-availability')
+    path('', include(router.urls))
 ]

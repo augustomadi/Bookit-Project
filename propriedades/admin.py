@@ -1,6 +1,5 @@
 from django.contrib import admin
-from .models import Propriedade, Reserva
+from .models import Propriedade
 
 # Register your models here.
 admin.site.register(Propriedade)
-admin.site.register(Reserva)

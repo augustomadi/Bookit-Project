@@ -7,4 +7,4 @@ class ReservaFilter(filters.FilterSet):
 
     class Meta:
         model = Reserva
-        fields = ['client_email', 'property_id']
+        fields = ['client_email', 'property_id'] 

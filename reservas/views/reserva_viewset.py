@@ -7,7 +7,6 @@ from rest_framework import status
 from ..filters import ReservaFilter
 from django_filters.rest_framework import DjangoFilterBackend
 
-
 class ReservaViewSet(viewsets.ModelViewSet):
     """
     ViewSet para gerenciar reservas.

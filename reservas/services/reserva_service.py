@@ -1,7 +1,7 @@
-from ..models import Propriedade, Reserva
+from ..models import Reserva
+from propriedades.models import Propriedade
 from rest_framework import status
 from rest_framework.response import Response
-
 
 class ReservaService:
     @staticmethod

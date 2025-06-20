@@ -1,11 +1,14 @@
-from rest_framework import viewsets
+"""Módulo propriedade_viewset."""
+
 from django_filters.rest_framework import DjangoFilterBackend
+
+from rest_framework import status
+from rest_framework import viewsets
+from rest_framework.response import Response
+
+from ..filters import PropriedadeFilter
 from ..models import Propriedade
 from ..serializers import PropriedadeSerializer
-from ..filters import PropriedadeFilter
-from rest_framework.response import Response
-from rest_framework import status
-
 
 
 class PropriedadeViewSet(viewsets.ModelViewSet):
@@ -16,7 +19,7 @@ class PropriedadeViewSet(viewsets.ModelViewSet):
     queryset = Propriedade.objects.all()
     serializer_class = PropriedadeSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_class = PropriedadeFilter 
+    filterset_class = PropriedadeFilter
 
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()

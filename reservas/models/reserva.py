@@ -1,6 +1,10 @@
+"""Módulo reserva."""
+
+from propriedades.models.propriedade import Propriedade
+
 from django.db import models
 from django.utils import timezone
-from propriedades.models.propriedade import Propriedade
+
 
 class Reserva(models.Model):
     property_id = models.ForeignKey(Propriedade, on_delete=models.CASCADE, related_name='reservas')
@@ -17,4 +21,4 @@ class Reserva(models.Model):
 
     class Meta:
         verbose_name = 'Reserva'
-        verbose_name_plural = 'Reservas' 
+        verbose_name_plural = 'Reservas'

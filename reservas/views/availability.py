@@ -1,8 +1,13 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
-from ..models import Reserva
+"""Módulo availability."""
+
 from propriedades.models import Propriedade
+
+from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
+from ..models import Reserva
+
 
 class PropertyAvailabilityView(APIView):
     def get(self, request):
@@ -30,4 +35,4 @@ class PropertyAvailabilityView(APIView):
         if reservas_existentes.exists():
             return Response({'available': False, 'error': 'Propriedade indisponível para o período solicitado.'}, status=status.HTTP_200_OK)
 
-        return Response({'available': True}, status=status.HTTP_200_OK) 
+        return Response({'available': True}, status=status.HTTP_200_OK)

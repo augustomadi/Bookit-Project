@@ -1,7 +1,12 @@
-from ..models import Reserva
+"""Módulo reserva_service."""
+
 from propriedades.models import Propriedade
+
 from rest_framework import status
 from rest_framework.response import Response
+
+from ..models import Reserva
+
 
 class ReservaService:
     @staticmethod
@@ -20,14 +25,14 @@ class ReservaService:
             propriedade = Propriedade.objects.get(id=property_id)
         except Propriedade.DoesNotExist:
             return False, Response(
-                {'error': 'Propriedade não encontrada'}, 
+                {'error': 'Propriedade não encontrada'},
                 status=status.HTTP_400_BAD_REQUEST
             )
 
         # Verificar capacidade
         if guests_quantity > propriedade.capacity:
             return False, Response(
-                {'error': 'Número de hóspedes excede a capacidade máxima da propriedade'}, 
+                {'error': 'Número de hóspedes excede a capacidade máxima da propriedade'},
                 status=status.HTTP_400_BAD_REQUEST
             )
 
@@ -40,9 +45,9 @@ class ReservaService:
 
         if reservas_existentes.exists():
             return False, Response(
-                {'error': 'A propriedade não está disponível para o período solicitado'}, 
+                {'error': 'A propriedade não está disponível para o período solicitado'},
                 status=status.HTTP_400_BAD_REQUEST
             )
 
         # Se chegou até aqui, pode criar a reserva
-        return True, None 
+        return True, None

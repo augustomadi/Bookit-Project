@@ -1,4 +1,7 @@
+"""Módulo propriedade_serializer."""
+
 from rest_framework import serializers
+
 from ..models import Propriedade
 
 
@@ -10,4 +13,4 @@ class PropriedadeSerializer(serializers.ModelSerializer):
             'address_city', 'address_state', 'country', 'rooms', 'capacity',
             'price_per_night', 'created_at', 'updated_at'
         ]
-        read_only_fields = ['id', 'created_at', 'updated_at'] 
+        read_only_fields = ['id', 'created_at', 'updated_at']

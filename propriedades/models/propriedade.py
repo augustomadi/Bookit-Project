@@ -1,3 +1,5 @@
+"""Módulo propriedade."""
+
 from django.db import models
 from django.utils import timezone
 
@@ -21,4 +23,4 @@ class Propriedade(models.Model):
 
     class Meta:
         verbose_name = 'Propriedade'
-        verbose_name_plural = 'Propriedades' 
+        verbose_name_plural = 'Propriedades'

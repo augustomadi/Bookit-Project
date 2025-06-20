@@ -1,11 +1,16 @@
+"""Módulo reserva_viewset."""
+
+from django_filters.rest_framework import DjangoFilterBackend
+
+from rest_framework import status
 from rest_framework import viewsets
+from rest_framework.response import Response
+
+from ..filters import ReservaFilter
 from ..models import Reserva
 from ..serializers import ReservaSerializer
 from ..services import ReservaService
-from rest_framework.response import Response
-from rest_framework import status
-from ..filters import ReservaFilter
-from django_filters.rest_framework import DjangoFilterBackend
+
 
 class ReservaViewSet(viewsets.ModelViewSet):
     """
@@ -16,17 +21,17 @@ class ReservaViewSet(viewsets.ModelViewSet):
     serializer_class = ReservaSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_class = ReservaFilter
-    
+
     def create(self, request, *args, **kwargs):
         """
         Cria uma nova reserva após validar disponibilidade e capacidade.
         """
         # Usar o service para validar
         sucesso, resposta_erro = ReservaService.validar_e_criar_reserva(request.data)
-        
+
         if not sucesso:
             return resposta_erro
-        
+
         # Se passou por todas as validações, criar a reserva
         return super().create(request, *args, **kwargs)
 
@@ -37,4 +42,4 @@ class ReservaViewSet(viewsets.ModelViewSet):
         return Response(
             {"message": f"Reserva de {cliente} cancelada com sucesso."},
             status=status.HTTP_200_OK
-        ) 
+        )
